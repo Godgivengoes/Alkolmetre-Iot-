@@ -19,7 +19,8 @@ DOUT : Çıkış pini
 AOUT : Analog out pini anlamına geliyor bunu ESP8266 da A0 pinine bağlıyoruz.
 VCC: 3.3 V u bağladğımız bacak
 
-					 
+					 ![image](https://user-images.githubusercontent.com/76569487/191966956-37e7316a-3e24-4919-b477-c1427e820517.jpeg)
+
 					Şekil.1-MQ-3 sensor
 3-)OLED I2C 0.96 inch Display
 64x128 piksel olan adafriut industries tarafından üretilen oldukça kullanışlı bir ekran
@@ -29,6 +30,7 @@ GND:Toprak
 SCL:D2 pinine bağlıyoruz
 SDA :D1 pininde bağlıyoruz
 
+![image](https://user-images.githubusercontent.com/76569487/191966996-0c5009bb-7650-4df2-9af7-0bfd0f612345.jpeg)
 
 					 
 					Şekil.2-I2C 0.96 inch OLED ekran
@@ -38,26 +40,31 @@ SDA :D1 pininde bağlıyoruz
 
 Öncelikle gerekli bağlantıları yaptıktan sonra alkol ölçüm biçimlerinden bahsetmek istiyorum.
 
-			 
+			![image](https://user-images.githubusercontent.com/76569487/191967046-cb8bc4f4-769c-43b5-9fe0-8883057a98e9.jpeg)
+ 
 			Şekil.3-Kandaki alkol miktarı
 
 Yukardaki tabloya göre kişilerin yaş cinsiyet değişimiyle beraber farklılıkları göz önüne alınarak ,kandaki alkol miktarı tahmini gösterilmiştir. Ek olarak , yasal sınırda belirtilmistir.
 Çoğu Avrupa ülkesi başta olmak üzere Kanada ve Amerika Birleşik Devletleri vatandaşarına  bu tabloya göre yasal alkol sürüş limiti hakkı tanımıştır.
 
 Serial olarak takip edebilir olan BAC değerinin hesaplanması aşağıdaki gibidir.
+<img width="364" alt="image" src="https://user-images.githubusercontent.com/76569487/191967072-a511c503-0a92-4fb0-859e-647c5c4639d8.png">
 
  
 Ana formul yukardaki gibidir.
 
 
 burada F1, x1 ve F0, x0, arsa üzerindeki çizgiden iki noktadır. Yalnızca yukarıdaki grafikteki alkol çizgisini ele alırsak, iki noktanın konumunu yaklaşık olarak tahmin edebiliriz:
+<img width="225" alt="image" src="https://user-images.githubusercontent.com/76569487/191967084-6b8d2d56-c2e0-4142-8f10-cfac1853729c.png">
 
  
 Noktaları yukardaki ana formule eklersek:
+<img width="364" alt="image" src="https://user-images.githubusercontent.com/76569487/191967106-9b13d9c0-3d9f-4ad9-b6c8-a8df33a255f7.png">
 
  
 RO(temiz hava) / RS (son hava) arasındaki ilişkiyi gösteren formul
- 
+ <img width="255" alt="image" src="https://user-images.githubusercontent.com/76569487/191967131-8bbe3ea5-3d61-4916-9eca-570027180083.png">
+
 Denklem çözülünce :
  
 Miligramdan grama dönüşğüm yapıldıktan sonra son hali:
@@ -65,6 +72,8 @@ Miligramdan grama dönüşğüm yapıldıktan sonra son hali:
 Kurumlular
 Rasperry Pi işletim sisteminde düzgün çalışmayacağı için ubuntunun son sürümünü kuruyoruz. Ardından IOTstack kurulumuna geçiyoruz.IOTstack kurduktan sonra kullanacağımız yapıları işaretleyip kurduktan sonra final olarak bu görüntüyü almamız gerek
  
+ <img width="468" alt="image" src="https://user-images.githubusercontent.com/76569487/191966854-851bf440-5a09-4e0b-a97c-d1e282ba50bd.png">
+
 			Şekil.4 IOTstack kurulum final ekran görüntüsü
 
 Kurulum bittikten sonra bağlanmış olduğumuz IP nin onun port numaraları eklenerek özelleştirme sayfalarına gidilir.Node-Red 1880 , Grafana 3000, Portainer 9000, olarak erişebiliriz.İlk olarak es
@@ -101,10 +110,16 @@ Kurulum bittikten sonra bağlanmış olduğumuz IP nin onun port numaraları ekl
 Bulgular
 
 Temiz havayı R0 olarak tanıplayıp değeri yaklasık 130000 olarak alındı ve ekler kısmındaki kodlara döküldü ve bu BAC oranı serial olarak izlenebilmekte.
+<img width="410" alt="image" src="https://user-images.githubusercontent.com/76569487/191966713-36864de0-fb68-4401-9104-95c1950d4f53.png">
+
  
 			Şekil.4 – Serial olarak görünen BAC değeri
 Serial de gözüken bana request geldi kısımlarını alkololc fonksyonunda ne zaman girdiğini görebilmek için kullanıldı.
-MQ-3 sensörüne alkol tutulduğunda serialde görülen değişimler aşağıdaki gibidir. Hem BAC değerleri ve Alkol miktarlarına göre değişim gözükmektedir.                         
+MQ-3 sensörüne alkol tutulduğunda serialde görülen değişimler aşağıdaki gibidir. Hem BAC değerleri ve Alkol miktarlarına göre değişim gözükmektedir.  
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/76569487/191966765-1e0b970c-bc3f-426d-b4ec-935b69f3b42f.png">
+
+<img width="137" alt="image" src="https://user-images.githubusercontent.com/76569487/191966786-8c85c724-bd85-4185-88fe-ed0af6bbaeab.png">
+
 Şekil.5 Serialde sensorun alkole bağlı görünen değişimi
 
 Serial porta görünen alkol ölçüm ekran görüntüleri ayrıca ekler kısmında gösterilmiştir
@@ -120,7 +135,7 @@ Bu projede yaptığımız ölçüm sonuçlarına baktığımızda gerçeğe tam 
 
 
 
-
+  --------------------------------------------------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
 
 Ekler
 Kodlar
@@ -397,16 +412,26 @@ void loop() {
 
  
   } 
+  
+  --------------------------------------------------------------------------------------------------------------------------------
+  <img width="385" alt="image" src="https://user-images.githubusercontent.com/76569487/191966493-ac21ea68-9e1e-4982-9899-62ba7f88e0df.png">
+
 Şekil.6 WIFI  bağlanma ve verdiği IP adresini görüntüleme
 
 Yukardaki ekran görüntüsünde gözüken IP değerlerini tarayıcıya girince tarayıcıdan da değerleri görüntüleyebilmekteyiz.
- 
+ ![image](https://user-images.githubusercontent.com/76569487/191966469-ca0ba720-d738-461f-bd85-8e325e0e8032.jpeg)
+
 Şekil.7 Alkolmetrenin hazır görüntüsü
 
   
 Şekil.8 Tarayıcıda gözüken ölçüm değerleri
+<img width="235" alt="image" src="https://user-images.githubusercontent.com/76569487/191966338-c4495f5b-feaf-483d-adb1-71f1f0e899ee.png">
+<img width="216" alt="image" src="https://user-images.githubusercontent.com/76569487/191966356-62aa948c-f7ba-4918-998e-925035c8803a.png">
+
   Şekil.9 Tarayıcıda gözüken ölçüm değerleri
 
+![image](https://user-images.githubusercontent.com/76569487/191966397-bdf7d167-7eaa-4a27-b93e-5fb34fcfbf02.jpeg)
+![image](https://user-images.githubusercontent.com/76569487/191966403-f576ecdd-119d-4b06-8102-2f4c0f9b141a.jpeg)
 
   
 Şekil.10 OLED ekranında gözüken ölçüm değerleri
@@ -414,35 +439,19 @@ Yukardaki ekran görüntüsünde gözüken IP değerlerini tarayıcıya girince 
   
 Şekil.11 OLED ekranında gözüken ölçüm değerleri
 
+<img width="195" alt="image" src="https://user-images.githubusercontent.com/76569487/191966229-73eee67c-92be-4b99-83c5-a84bb832f027.png"><img width="240" alt="image" src="https://user-images.githubusercontent.com/76569487/191966249-d1ddcebf-8cd5-4e3c-ac14-de23af51ac38.png">
+
+![image](https://user-images.githubusercontent.com/76569487/191966277-ac164237-90b6-42e1-80ef-94a0205e4e81.jpeg)
+![image](https://user-images.githubusercontent.com/76569487/191966308-b8cf7df6-25ba-42ff-9b90-8fb1e57feb35.jpeg)
 
   
 Şekil.12 Serial porta gözlemlenen ölçüm değerleri (BAC dahil)
 
-<img width="191" alt="image" src="https://user-images.githubusercontent.com/76569487/191966038-1755f04c-05b9-43c2-ad4a-3213ceb609b0.png">
+<img width="191" alt="image" src="https://user-images.githubusercontent.com/76569487/191966038-1755f04c-05b9-43c2-ad4a-3213ceb609b0.png"><img width="245" alt="image" src="https://user-images.githubusercontent.com/76569487/191966181-5e272c24-5235-4795-b549-9af053b0db63.png">
+
 
   
 Şekil.13 Serial porta gözlemlenen ölçüm değerleri (BAC dahil)
 
 
 
-Kaynakça
-
-https://github.com/miguel5612/MQSensorsLib/blob/master/examples/MQ-3/MQ-3.ino
-
-https://gelecegiyazanlar.turkcell.com.tr/konu/arduino#courses_list
-
-https://en.wikipedia.org/wiki/Breathalyzer
-
-https://www.mcgill.ca/oss/article/did-you-know/did-you-know-breathalyzers-dont-directly-measure-your-blood-alcohol-concentration
-
-https://circuits4you.com/2016/12/16/esp8266-web-server-html/
-
-https://electronics.howstuffworks.com/gadgets/automotive/breathalyzer.html
-
-https://www.bactrack.com/blogs/expert-center/35457349-how-does-a-breathalyzer-work
-
-https://theiotprojects.com/esp8266-data-logger-upload-data-on-webserver/
-
-https://www.youtube.com/watch?v=VNgFbQAVboA&list=LL&index=3&t=1s
-
-https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer
