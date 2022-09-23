@@ -1,12 +1,24 @@
 # Alkolmetre-Iot-
 docker npm kullanarak yaptıgım ardunio ide kullanarak gerçeklerştiripdiğim IoT projesi
+
+
+
+
 Özet
 Esp8266 kartını kullanarak MQ-3 sensor yardımı ile OLED ekrandan ve Grafana, InfluxDB ve Node-red yardımıyla gerekli hesaplamalarla alkol miktarı tespiti ve veri tabanına kaydedilmesi.
+
+
+
+
 Giriş
 Dünyada her dönem de olduğu gibi içinde bulunduğumuz dönemde dahil olmak üzere içki tüketimi hiçbir zaman insanların sosyal hayatlarından ayrı tutulmamıştır. Kimi zaman arkadaş buluşmalarında kimi zaman bir akşam yemeğinde insanların sofrasında yerini almıştır içkiler. Bununla birlikte ortaya çıkan insanların sarhoşluk durumları günlük hayatını etkileyebildiği gibi başka bireylerin de hayatını doğrudan veya dolaylı bir şekilde etkilemektedir. Bu sebebten alkol içme derecesinin ölçülmesi çoğu durumda gerekli bir durum halini almıştır. Özellikle , trafik polislerinin kullandığı alkolmetre cihazları büyük bir iş yapmaktadır. Bu bilgilerden yola çıkıp , alkolmetre kullanmanın insanları daha bilinçli bir sürücü yapacağını düşündüğüm için alkolmetre yapma fikrine karar verdim. Aslında yaptığım proje , sürücülerin üflediği  cihazlarda benzer mantıkta çalışıyor. Materyal ve yöntem kısmında daha açıklayıcı şekilde ilerlediğim adımlar açıklanmıştır.
+
+
+
 Materyal yöntem
 1-)ESP8266
 Hızla gelişen IOT (Nesnelerin İnterneti) alanında fenomen olma yolunda ilerleyen bu minik modül ucuz olması ve geniş doküman kaynaklarıyla halen popülerliğini korumaktadır.
+
 ESP8266, TTL (Seri Haberleşme) ile kablosuz internet ağına bağlanabilen bir modüldür. Ucuz ve kolay kullanıma sahip olmasından dolayı nesnelerin interneti projelerinde yaygın olarak kullanılmaktadır.
 ESP8266 modülü 3.3V ile çalışmaktadır.
 Bu modül ortamda bulunan kablosuz ağlara bağlanabileceği gibi, kendi internet ağına yayarak diğer cihazların bu ağa bağlanabilmesine de imkan sağlamaktadır. Bir çok farklı işlev olarak kullanabiliriz.Server, AccessPoint vb. farklı sekillerde kullanılabilir.
@@ -20,6 +32,7 @@ AOUT : Analog out pini anlamına geliyor bunu ESP8266 da A0 pinine bağlıyoruz.
 VCC: 3.3 V u bağladğımız bacak
 
 					 ![image](https://user-images.githubusercontent.com/76569487/191966956-37e7316a-3e24-4919-b477-c1427e820517.jpeg)
+
 
 					Şekil.1-MQ-3 sensor
 3-)OLED I2C 0.96 inch Display
@@ -48,7 +61,9 @@ Yukardaki tabloya göre kişilerin yaş cinsiyet değişimiyle beraber farklıl�
 Çoğu Avrupa ülkesi başta olmak üzere Kanada ve Amerika Birleşik Devletleri vatandaşarına  bu tabloya göre yasal alkol sürüş limiti hakkı tanımıştır.
 
 Serial olarak takip edebilir olan BAC değerinin hesaplanması aşağıdaki gibidir.
+
 <img width="364" alt="image" src="https://user-images.githubusercontent.com/76569487/191967072-a511c503-0a92-4fb0-859e-647c5c4639d8.png">
+
 
  
 Ana formul yukardaki gibidir.
@@ -110,6 +125,8 @@ Kurulum bittikten sonra bağlanmış olduğumuz IP nin onun port numaraları ekl
 Bulgular
 
 Temiz havayı R0 olarak tanıplayıp değeri yaklasık 130000 olarak alındı ve ekler kısmındaki kodlara döküldü ve bu BAC oranı serial olarak izlenebilmekte.
+
+
 <img width="410" alt="image" src="https://user-images.githubusercontent.com/76569487/191966713-36864de0-fb68-4401-9104-95c1950d4f53.png">
 
  
@@ -419,13 +436,15 @@ void loop() {
 Şekil.6 WIFI  bağlanma ve verdiği IP adresini görüntüleme
 
 Yukardaki ekran görüntüsünde gözüken IP değerlerini tarayıcıya girince tarayıcıdan da değerleri görüntüleyebilmekteyiz.
- ![image](https://user-images.githubusercontent.com/76569487/191966469-ca0ba720-d738-461f-bd85-8e325e0e8032.jpeg)
+
+![image](https://user-images.githubusercontent.com/76569487/191967708-e32903c5-ddc2-4b8e-b65c-d40d8dbb006f.jpeg)
 
 Şekil.7 Alkolmetrenin hazır görüntüsü
 
   
 Şekil.8 Tarayıcıda gözüken ölçüm değerleri
 <img width="235" alt="image" src="https://user-images.githubusercontent.com/76569487/191966338-c4495f5b-feaf-483d-adb1-71f1f0e899ee.png">
+
 <img width="216" alt="image" src="https://user-images.githubusercontent.com/76569487/191966356-62aa948c-f7ba-4918-998e-925035c8803a.png">
 
   Şekil.9 Tarayıcıda gözüken ölçüm değerleri
