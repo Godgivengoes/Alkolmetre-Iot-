@@ -417,6 +417,9 @@ Yukardaki ekran görüntüsünde gözüken IP değerlerini tarayıcıya girince 
 
   
 Şekil.12 Serial porta gözlemlenen ölçüm değerleri (BAC dahil)
+
+<img width="191" alt="image" src="https://user-images.githubusercontent.com/76569487/191966038-1755f04c-05b9-43c2-ad4a-3213ceb609b0.png">
+
   
 Şekil.13 Serial porta gözlemlenen ölçüm değerleri (BAC dahil)
 
